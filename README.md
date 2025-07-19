@@ -23,6 +23,8 @@ This project implements a robust, data-driven credit scoring system for DeFi wal
 - Features are normalized using log transforms, min-max scaling, and inversion where appropriate, ensuring fair contribution to the score.
 
 ### 3. **Scoring Model**
+- The data was found to be highly skewed and unlabeled, with some features acting as strong risk/bot flags. Correlation analysis showed some redundancy (e.g., between repay_to_borrow_ratio and redeem_ratio), which was addressed in feature selection.
+-  Given the skewed, unlabeled nature of the data and the presence of strong anomaly signals, Isolation Forest was chosen as the most robust and appropriate model for scoring.
 - An **Isolation Forest** (unsupervised anomaly detection) is used to assign a risk score to each wallet.
 - Scores are **inverted and scaled to 0–1000** (higher = better).
 
