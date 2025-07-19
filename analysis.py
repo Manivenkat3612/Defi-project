@@ -1,6 +1,8 @@
-# Feature weights were initially chosen based on real-life domain knowledge (e.g., liquidations, repayment, activity).
-# After exploratory data analysis (variance, correlation, PCA), weights and feature selection were recalibrated to reflect statistical power and reduce redundancy.
-# The final scoring uses Isolation Forest for robust, unsupervised risk scoring, but the feature engineering and normalization reflect this careful calibration process.
+# Feature weights were initially chosen based on real-life domain knowledge (e.g., liquidations, repayment, activity) to guide feature selection and normalization.
+# After exploratory data analysis (variance, correlation, PCA), feature selection and normalization were recalibrated to reflect statistical power and reduce redundancy.
+# The data was found to be highly skewed (many small users, few whales/bots) and unlabeled, with some features (e.g., has_liquidations, pct_short_loans, pct_gaps_lt_60s) acting as strong risk/bot flags. Correlation analysis showed some redundancy (e.g., between repay_to_borrow_ratio and redeem_ratio), which was addressed in feature selection.
+# Given the skewed, unlabeled nature of the data and the presence of strong anomaly signals, Isolation Forest was chosen as the most robust and appropriate model for scoring.
+# The final scoring uses Isolation Forest for robust, unsupervised risk scoring; explicit weights are not used in the final score, but the feature engineering and normalization reflect this careful calibration process.
 # All steps are transparent and reproducible for extensibility and auditability.
 import json
 import numpy as np
