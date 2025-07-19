@@ -34,14 +34,20 @@ This project implements a robust, data-driven credit scoring system for DeFi wal
 
 ## Architecture & Processing Flow
 
-```mermaid
-flowchart TD
-    A[Raw JSON: user-wallet-transactions.json]
-    B[Feature Engineering & Normalization]
-    C[Isolation Forest Scoring]
-    D[Score Scaling (0-1000)]
-    E[wallet_scores.csv]
-    A --> B --> C --> D --> E
+```
+Raw JSON: user-wallet-transactions.json
+|
+v
+Feature Engineering & Normalization
+|
+v
+Isolation Forest Scoring
+|
+v
+Score Scaling (0-1000)
+|
+v
+wallet_scores.csv
 ```
 
 ## How to Run
